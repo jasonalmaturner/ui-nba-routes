@@ -12,10 +12,10 @@
     <div class="main-container" ng-controller="mainCtrl">
         <div class="menu">
             <ul>
-                <li><a href="/#/"> Home </a></li>
-                <li><a href="/#/teams/utahjazz"> Utah Jazz </a></li>
-                <li><a href="/#/teams/losangeleslakers"> Los Angeles Lakers </a></li>
-                <li><a href="/#/teams/miamiheat"> Miami Heat </a></li>
+                <li><a ui-sref="home"> Home </a></li>
+                <li><a ui-sref="teams({team: 'utahjazz'})"> Utah Jazz </a></li>
+                <li><a ui-sref="teams({team: 'losangeleslakers'})"> Los Angeles Lakers </a></li>
+                <li><a ui-sref="teams({team: 'miamiheat'})"> Miami Heat </a></li>
             </ul>
         </div>
 
@@ -29,9 +29,9 @@
     <script src="./js/mainCtrl.js"></script>
     <script src="./js/defaultHeaders.js"></script>
     <script src="./js/teams/teamCtrl.js"></script>
-    <script src="./js/teams/teamService.js"></script>
+    <script src="./js/services/teamService.js"></script>
     <script src="./js/home/homeCtrl.js"></script>
-    <script src="./js/home/homeService.js"></script>
+    <script src="./js/services/homeService.js"></script>
 </body>
 
 </html>
