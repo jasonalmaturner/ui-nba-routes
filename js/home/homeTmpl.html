@@ -1,3 +1,20 @@
-<div class="inner-container">
-  Gimme something good
+<div class="flex-container">
+  <div class="flex-team" ng-repeat="teamData in teamsData">
+    <div class="inner-container">
+        <div class="logo">
+            <img ng-src="{{teamData.logoPath}}">
+        </div>
+        <div class="record">
+            <h1> Wins: {{teamData.wins}} Losses: {{teamData.losses}} </h1>
+        </div>
+        <div class="team-data">
+            <div class="game" ng-repeat="game in teamData" ng-class="{'even' : $index % 2 === 0}">
+                Date: {{game.createdAt | date}}
+                <br /> {{teamData.homeTeam}} - {{game.homeTeamScore}}
+                <br /> {{game.opponent}} - {{game.opponentScore}}
+                </br />
+            </div>
+        </div>
+    </div>
+  </div>
 </div>

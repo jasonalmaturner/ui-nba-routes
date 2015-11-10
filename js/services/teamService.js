@@ -17,7 +17,7 @@ angular.module('nbaRoutes').service('teamService', function ($http, $q) {
 
   this.getTeamData = function(team) {
     var dfd = $q.defer();
-    var url = 'https://api.parse.com/1/classes/' + team;
+    var url = 'https://api.parse.com/1/classes/' + team + '?order=-createdAt';
     $http({
       method: 'GET',
       url: url,
@@ -25,7 +25,7 @@ angular.module('nbaRoutes').service('teamService', function ($http, $q) {
       var results = res.data.results;
       var wins = 0;
       var losses = 0;
-      for (var i = 0; i < results; i++) {
+      for (var i = 0; i < results.length; i++) {
         if (results[i].won) {
           wins++;
         } else {
@@ -33,6 +33,20 @@ angular.module('nbaRoutes').service('teamService', function ($http, $q) {
         }
       }
 
+      switch (team) {
+        case 'utahjazz':
+          results.homeTeam  = 'Utah Jazz';
+          results.logoPath = 'images/jazz-logo.png';
+          break;
+        case 'losangeleslakers':
+          results.homeTeam = 'Los Angeles Lakers';
+          results.logoPath = 'images/lakers-logo.png';
+          break;
+        case 'miamiheat':
+          results.homeTeam = 'Miami Heat';
+          results.logoPath = 'images/heat-logo.png';
+          break;
+      }
       results.wins = wins;
       results.losses = losses;
       dfd.resolve(results);
