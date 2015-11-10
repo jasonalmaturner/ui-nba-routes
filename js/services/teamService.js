@@ -1,4 +1,4 @@
-angular.module('nbaRoutes').service('teamService', function ($http, $q) {
+angular.module('nbaRoutes').service('teamService', function($http, $q) {
 
   this.addNewGame = function(gameObj) {
     var url = 'https://api.parse.com/1/classes/' + gameObj.homeTeam;
